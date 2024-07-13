@@ -13,7 +13,7 @@ pipeline {
                 }
             }
             steps {
-                cleanWs()
+                
                 sh 'echo "With docker"'
                 sh 'python --version'
                 sh 'pip3 install -r requirements.txt'
