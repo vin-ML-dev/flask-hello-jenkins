@@ -9,7 +9,7 @@ pipeline {
                 docker {
                     image 'python:3.10-alpine'
                     args '-u root:root'
-                    reuseNode true
+                    
                 }
             }
             steps {
