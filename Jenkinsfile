@@ -8,6 +8,7 @@ pipeline {
             agent {
                 docker {
                     image 'python:3.10-alpine'
+                    reuseNode true
                     args '-u root:root'
                     
                 }
@@ -20,6 +21,14 @@ pipeline {
                 echo "flask installed"
                 sh 'python app.py'
             }
+        }
+        
+        stage("test"){
+        steps {
+            sh 'echo "test stage begins"'
+            sh 'test -f "templates/home.html"'
+            sh 'echo "test done"'
+        }
         }
     }
 }
