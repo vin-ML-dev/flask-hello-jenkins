@@ -9,9 +9,11 @@ pipeline {
                 docker {
                     image 'python:3.10-alpine'
                     args '-u root:root'
+                    reuseNode true
                 }
             }
             steps {
+                cleanWs()
                 sh 'echo "With docker"'
                 sh 'python --version'
                 sh 'pip3 install -r requirements.txt'
