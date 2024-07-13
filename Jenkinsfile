@@ -1,17 +1,15 @@
 pipeline {
-    agent any
-
+    agent {
+      docker {
+            image 'python:3.10-alpine'
+            args '-u root:root'
+            }
+    }
     stages {
         
 
         stage('get-files') {
-            agent {
-                docker {
-                    image 'python:3.10-alpine'
-                    args '-u root:root'
-                    
-                }
-            }
+            
             steps {
                 
                 sh 'echo "With docker"'
