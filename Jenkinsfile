@@ -20,8 +20,7 @@ pipeline {
                 sh 'python --version'
                 sh 'pip install virtualenv'
                 
-                sh 'python -m venv my_env'
-                
+                sh 'virtualenv my_env'
                 sh 'pip install -r requirements.txt'
                 echo "virtual env created"
             }
