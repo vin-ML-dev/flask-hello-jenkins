@@ -21,7 +21,7 @@ pipeline {
                 sh 'pip install virtualenv'
                 
                 sh 'python -m venv my_env'
-                sh 'source myenv/bin/activate'
+                sh '. myenv/bin/activate'
                 sh 'pip install -r requirements.txt'
                 echo "virtual env created"
             }
