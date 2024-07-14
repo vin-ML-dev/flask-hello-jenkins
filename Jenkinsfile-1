@@ -18,11 +18,8 @@ pipeline {
             steps {
                 sh 'echo "With docker"'
                 sh 'python --version'
-                sh 'pip install venv'
-                sh 'python -m venv my_env'
-                sh 'source myenv/bin/activate'
-                sh 'pip install -r requirements.txt'
-                echo "virtual env created"
+                sh 'pip3 install flask'
+                echo "flask installed"
             }
         }
     }
