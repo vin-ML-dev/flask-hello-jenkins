@@ -21,5 +21,12 @@ pipeline {
                 echo "virtual env created"
             }
         }
+        
+        stage('run flask app'){
+        
+         steps{
+              sh 'python app.py'
+         }
+        }
     }
 }
