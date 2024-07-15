@@ -2,13 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('w/o docker') {
-            steps {
-                sh 'echo "Without docker"'
-            }
-        }
+        
 
-        stage('w/ docker') {
+        stage('build python env') {
             agent {
                 docker {
                     image 'python:3.10-alpine'
