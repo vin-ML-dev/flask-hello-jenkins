@@ -13,21 +13,14 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo "With docker"'
+                sh 'echo "build python env"'
                 sh 'python3 --version'
                 sh 'python3 -m pip install -r requirements.txt'
+                sh 'python3 app.py'
                 
             }
         }
         
-        stage('run flask app'){
-         agent{
-           reuseNode true
-         
-         } 
-         steps{
-              sh 'python3 app.py'
-         }
-        }
+        
     }
 }
