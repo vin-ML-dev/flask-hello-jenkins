@@ -9,21 +9,22 @@ pipeline {
                 docker {
                     image 'python:3.10-alpine'
                     args '-u root:root'
+                    reuseNode true
                 }
             }
             steps {
                 sh 'echo "With docker"'
-                sh 'python --version'
-                sh 'pip install virtualenv'
+                sh 'python3 --version'
+                sh 'python3 -m pip install -r requirements.txt'
                 
-                sh 'virtualenv my_env'
-                sh 'pip install -r requirements.txt'
-                echo "virtual env created"
             }
         }
         
         stage('run flask app'){
-        
+         agent{
+           reuseNode true
+         
+         } 
          steps{
               sh 'python3 app.py'
          }
