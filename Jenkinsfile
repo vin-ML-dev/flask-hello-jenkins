@@ -10,6 +10,15 @@ pipeline {
     
 
     stages {
+    
+       stage('Train model') {
+            
+            steps {
+               sh "python train.py"
+               echo "model trained"
+               
+                }
+        }
         
 
         stage('build docker image') {
