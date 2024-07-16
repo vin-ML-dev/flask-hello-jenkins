@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 import os
 
 
@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-   return "Hello world from CICD jenkins!!!"
+   return render_template('home.html')
 
 
 if __name__ == "__main__":
