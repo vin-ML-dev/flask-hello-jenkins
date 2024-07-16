@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    agent {
+    docker {
+          image 'python:3.10-alpine'
+          args '-u root:root'
+          reuseNode true
+      }    
+    }
     
     environment {
         
@@ -14,6 +20,7 @@ pipeline {
        stage('Train model') {
             
             steps {
+               sh 'python -m pip install -r requirements.txt'
                sh "python train.py"
                echo "model trained"
                
