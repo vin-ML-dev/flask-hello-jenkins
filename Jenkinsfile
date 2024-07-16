@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    
+    environment {
+        
+        CONTAINER_NAME = "flask-demo-jenkins"
+        
+    }
        
     
 
@@ -16,7 +22,9 @@ pipeline {
         
         stage('Run docker image'){
          steps {
-              sh 'docker run -p 5000:5000 flask-demo-jenkins'
+              sh 'docker stop $CONTAINER_NAME || true'
+              sh 'docker rm $CONTAINER_NAME || true'
+              sh 'docker run -p 5000:5000 --name $CONTAINER_NAME flask-demo-jenkins'
               
          }
          
