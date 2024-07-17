@@ -31,7 +31,7 @@ pipeline {
         stage('build docker image') {
             
             steps {
-                  sh "sudo usermod -aG docker jenkins"
+                  sh "usermod -aG docker jenkins"
                   sh "docker build -t flask-demo-jenkins ."
                
                 }
