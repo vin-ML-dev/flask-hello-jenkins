@@ -1,7 +1,7 @@
 pipeline {
     agent {
     docker {
-          image 'python:3.10-alpine'
+          image 'python:3.10-slim'
           args '-u root:root'
           reuseNode true
       }    
