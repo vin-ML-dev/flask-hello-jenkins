@@ -1,7 +1,7 @@
 pipeline {
     agent {
     docker {
-          image 'python:3.8'
+          image 'python:3.8-alpine'
           args '-u root:root'
           reuseNode true
       }    
@@ -31,7 +31,7 @@ pipeline {
         stage('build docker image') {
             
             steps {
-                  sh "usermod -aG docker jenkins"
+                 
                   sh "docker build -t flask-demo-jenkins ."
                
                 }
