@@ -29,7 +29,13 @@ pipeline {
         
 
         stage('build docker image') {
-            
+            agent {
+                docker {
+                    image 'python:3.8'
+                    args '-u root:root'
+                    reuseNode true
+                }
+            }
             steps {
                sh "docker build -t flask-demo-jenkins ."
                
