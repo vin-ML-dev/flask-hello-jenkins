@@ -1,31 +1,11 @@
 pipeline {
-    agent {
-    docker {
-          image 'python:3.8'
-          args '-u root:root'
-          reuseNode true
-      }    
-    }
-    
-    environment {
-        
-        CONTAINER_NAME = "flask-demo-jenkins"
-        
-    }
+    agent any
        
     
 
     stages {
     
-       stage('Train model') {
-            
-            steps {
-               sh 'python -m pip install -r requirements.txt'
-               sh "python train.py"
-               echo "model trained"
-               
-                }
-        }
+       
         
 
         stage('build docker image') {
