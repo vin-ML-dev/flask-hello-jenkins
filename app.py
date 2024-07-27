@@ -13,6 +13,7 @@ def make_predict(sample):
    prediction = model.predict(sample)[0]
    
    labels={0:"setosa",1:"versicolor",2:"virginica"}
+   
 
    return labels[prediction]
    

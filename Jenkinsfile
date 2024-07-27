@@ -10,7 +10,7 @@ pipeline {
      
     stages {
         
-          stage('Building docker container') {
+          stage('Building python env') {
             steps {
                   sh 'docker build -t python_env -f files/Dockerfile .'
                   
