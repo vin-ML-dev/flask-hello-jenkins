@@ -27,7 +27,7 @@ def predict():
    data = request.json
    #d1 = json.loads(data)
    #print(d1)
-   t = d1['test_data']
+   t = data['test_data']
    
    sample = np.array([t])
    pred = make_predict(sample)
