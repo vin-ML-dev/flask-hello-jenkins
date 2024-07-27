@@ -1,6 +1,6 @@
 from flask import Flask,render_template,jsonify,request
 import os
-import pickle
+import pickle,json
 import numpy as np
 
 
@@ -10,9 +10,11 @@ def make_predict(sample):
    with open('iris_model.pkl', 'rb') as f:
        model = pickle.load(f)
        
-   prediction = model.predict(sample)
+   prediction = model.predict(sample)[0]
+   
+   labels={0:"setosa",1:"versicolor",2:"virginica"}
 
-   return prediction
+   return labels[prediction]
    
    
 @app.route("/")
@@ -22,11 +24,14 @@ def hello():
 @app.route("/predict/",methods=['POST'])
 def predict():
 
-   print(request)
-   t = request.get_json['test_data']
-   print(t,type(t))
+   data = request.json
+   d1 = json.loads(data)
+   #print(d1)
+   t = d1['test_data']
+   
    sample = np.array([t])
    pred = make_predict(sample)
+   #print(pred)
 
    return jsonify({'response':pred})
    
