@@ -19,7 +19,7 @@ def make_predict(sample):
 def hello():
    return render_template('home.html')
 
-@pp.route('predict/')
+@app.route('predict/')
 def predict():
 
    t = request.json['test_data']
