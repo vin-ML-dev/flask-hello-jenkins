@@ -13,8 +13,7 @@ pipeline {
           stage('Building docker container') {
             steps {
                   sh 'docker build -t $DOCKER_IMAGE .'
-                  sh 'docker stop $CONTAINER_NAME || true'
-                  sh 'docker rm $CONTAINER_NAME || true'
+                  
                   sh 'docker run -d --name $CONTAINER_NAME $DOCKER_IMAGE'
                }
            }
