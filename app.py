@@ -22,7 +22,8 @@ def hello():
 @app.route("/predict/",methods=['POST'])
 def predict():
 
-   t = request.json['test_data']
+   print(request)
+   t = request.get_json['test_data']
    print(t,type(t))
    sample = np.array([t])
    pred = make_predict(sample)
