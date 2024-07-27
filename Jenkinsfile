@@ -1,12 +1,6 @@
 pipeline {
  
-    agent {
-    docker {
-          image 'python:3.9.18-slim'
-          args '-u root:root'
-          reuseNode true
-      }    
-    }
+    agent any
     
     environment {
          CONTAINER_NAME = "my-model"
@@ -14,24 +8,7 @@ pipeline {
      
     stages {
         
-          stage('build python env') {
-            
-            steps {
-                sh 'echo "build python env"'
-                sh 'python3 --version'
-                sh 'python3 -m pip install -r requirements.txt'
-                
-                
-            }
-        }
-            
-           stage('Training stage') {
-            steps {
-                    sh 'python train.py'
-                    echo "model trained"
-                }
-        }
-        
+          
                
         stage('build docker image') {
             
