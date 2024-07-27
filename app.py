@@ -25,7 +25,7 @@ def hello():
 def predict():
 
    data = request.json
-   d1 = json.loads(data)
+   #d1 = json.loads(data)
    #print(d1)
    t = d1['test_data']
    
