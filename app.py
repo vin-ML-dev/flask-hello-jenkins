@@ -19,10 +19,11 @@ def make_predict(sample):
 def hello():
    return render_template('home.html')
 
-@app.route("/predict/")
+@app.route("/predict/",methods=['POST'])
 def predict():
 
    t = request.json['test_data']
+   #print(t)
    sample = np.array([t])
    pred = make_predict(sample)
 
